@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/comida_preferia"
+        android:textColor="@android:color/black"
+        android:textSize="30sp" />
+
+    <RadioGroup
+        android:id="@+id/group"
+        android:layout_width="200dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="10dp">
+
+        <RadioButton
+            android:id="@+id/radioLasanha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/lasanha" />
+
+        <RadioButton
+            android:id="@+id/radioParmegiana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/parmegiana" />
+
+        <RadioButton
+            android:id="@+id/radioMacarao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/macarao" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonEsolher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/escolher" />
+
+    <TextView
+        android:id="@+id/textoExibicao"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:textAlignment="center" />
+</LinearLayout>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Signos</string>
+    <array name="signos">
+        <item>Áries</item>
+        <item>Touro</item>
+        <item>Gêmeos</item>
+        <item>Câncer</item>
+        <item>Leão</item>
+        <item>Virgem</item>
+        <item>Libra</item>
+        <item>Escorpião</item>
+        <item>Sagitário</item>
+        <item>Capricórnio</item>
+        <item>Aquário</item>
+        <item>Peixes</item>
+    </array>
+</resources>
