@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +26,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private SQLiteDatabase banco;
     private ArrayAdapter<String> itensAdaptador;
     private ArrayList<String> itens;
+    private ArrayList<Integer> ids;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             //Recupera componentes
             textoTarefa = findViewById(R.id.editText);
             botaoAdd = findViewById(R.id.buttonAdd);
-
+            listaTarefas = findViewById(R.id.recycleView);
 
             //Banco de Dados
             banco = openOrCreateDatabase("apptarefas", MODE_PRIVATE, null);
@@ -41,7 +44,17 @@ public class MainActivity extends Activity implements View.OnClickListener {
             //Tabela tarefas
             banco.execSQL("CREATE TABLE IF NOT EXISTS tarefas(id INTEGER PRIMARY KEY AUTOINCREMENT, tarefa VARCHAR)");
             botaoAdd.setOnClickListener(this);
-
+//            listaTarefas.setOnItemClickListener(this);
+            listaTarefas.setLongClickable(true);
+            listaTarefas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    Log.i("ITEM - ", position + " / " + ids.get(position));
+                    removeTarefa(ids.get(position));
+                    reuperaTarefa();
+                    return true;
+                }
+            });
             //Recupera tarefas
             reuperaTarefa();
         } catch (Exception e) {
@@ -85,8 +98,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
             int indiceColId = cursor.getColumnIndex("id");
             int indiceColTarefa = cursor.getColumnIndex("tarefa");
             //Cria adaptador
-            listaTarefas = findViewById(R.id.recycleView);
+
             itens = new ArrayList<>();
+            ids = new ArrayList<>();
             itensAdaptador = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_list_item_2, android.R.id.text1, itens);
             listaTarefas.setAdapter(itensAdaptador);
             //Lista tarefa
@@ -95,10 +109,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
 //                Log.i("Resultado - ", "Tarefa: " + cursor.getString(indiceColId));
 //                Log.i("Resultado - ", "Tarefa: " + cursor.getString(indiceColId));
                 itens.add(cursor.getString(indiceColTarefa));
+                ids.add(Integer.parseInt(cursor.getString(indiceColId)));
                 cursor.moveToNext();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private void removeTarefa(Integer id) {
+        try {
+            banco.execSQL("DELETE FROM tarefas WHERE id = " + id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
