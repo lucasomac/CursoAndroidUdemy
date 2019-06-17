@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "274366640723",
+    "firebase_url": "https://autenticacao-a78be.firebaseio.com",
+    "project_id": "autenticacao-a78be",
+    "storage_bucket": "autenticacao-a78be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274366640723:android:0926b61824a6b749",
+        "android_client_info": {
+          "package_name": "br.com.lucolimac.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274366640723-hfjp7rdeu3gaoqhb7la4tvpkgim9km9m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.lucolimac.login",
+            "certificate_hash": "3ef78fbe676f6632a1fb06dee4e5d5432e714eb0"
+          }
+        },
+        {
+          "client_id": "274366640723-rd1b4g3htdq0a85p9dcpif2haq5a5mab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKC8kDk72lInvcY_wzGDRyB-Xz8FHHIHs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274366640723-rd1b4g3htdq0a85p9dcpif2haq5a5mab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
