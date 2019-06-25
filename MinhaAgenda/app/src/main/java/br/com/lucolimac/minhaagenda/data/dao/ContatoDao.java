@@ -1,5 +1,6 @@
 package br.com.lucolimac.minhaagenda.data.dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,7 +17,7 @@ public class ContatoDao extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "CREATE TABLE contato(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT,email TEXT, telefone TEXT, imagem TEXT, excluido INTEGER DEFAULT 0)";
+        String sql = "CREATE TABLE IF NOT EXISTS contato(id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT,email TEXT, telefone TEXT, imagem TEXT, excluido INTEGER DEFAULT 0)";
         sqLiteDatabase.execSQL(sql);
     }
 
@@ -45,4 +46,33 @@ public class ContatoDao extends SQLiteOpenHelper {
         return lista;
     }
 
+    public void insere(Contato contato) {
+        ContentValues cv = criaContentValues(contato);
+
+        SQLiteDatabase db = getWritableDatabase();
+        long id = db.insert("contato", null, cv);
+        contato.setId((int) id);
+    }
+
+    private ContentValues criaContentValues(Contato contato) {
+        ContentValues cv = new ContentValues();
+        cv.put("nome", contato.getNome());
+        cv.put("email", contato.getEmail());
+        cv.put("telefone", contato.getTelefone());
+        cv.put("imagem", contato.getImagem());
+        cv.put("excluido", contato.getExcluido());
+        return cv;
+    }
+
+    public void edita(Contato contato) {
+        ContentValues cv = criaContentValues(contato);
+        String sql = "id = " + contato.getId();
+        SQLiteDatabase db = getWritableDatabase();
+        db.update("contato", cv, sql, null);
+    }
+
+    public void remove(Contato contato) {
+        contato.setExcluido(1);
+        edita(contato);
+    }
 }
