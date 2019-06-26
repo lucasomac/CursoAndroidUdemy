@@ -11,6 +11,8 @@
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:background="@color/colorPrimaryDark"
+        android:clickable="true"
+        android:focusable="true"
         android:src="@drawable/ic_action_camera"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

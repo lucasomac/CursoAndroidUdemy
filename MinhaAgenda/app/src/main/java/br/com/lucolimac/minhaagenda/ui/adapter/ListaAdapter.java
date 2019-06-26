@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import br.com.lucolimac.minhaagenda.R;
+import br.com.lucolimac.minhaagenda.Utils.ImagemUtils;
 import br.com.lucolimac.minhaagenda.data.model.Contato;
 
 public class ListaAdapter extends BaseAdapter {
@@ -49,6 +50,7 @@ public class ListaAdapter extends BaseAdapter {
 
         viewNome.setText(contato.getNome());
         viewEmail.setText(contato.getEmail());
+        ImagemUtils.setImagem(viewImage, contato.getImagem(), 60, 60);
         return view;
     }
 }
