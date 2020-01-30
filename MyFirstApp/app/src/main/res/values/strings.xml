@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyFirstApp</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="logar">Logar</string>
+    <string name="manter_conectado">Manter Conectado</string>
+</resources>
